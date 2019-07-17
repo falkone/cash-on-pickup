@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package    Falkone_CashOnPickup
+ * @author     Falk Ulbricht
+ * @copyright  2019 Falkone
+ * @license    https://www.gnu.org/licenses/gpl-3.0.de.html GNU General Public License 3
+ * @since      1.0.0
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Falkone_CashOnPickup" setup_version="1.0.0">
+        <sequence>
+            <module name="Magento_Store"/>
+            <module name="Magento_Sales"/>
+            <module name="Magento_Payment"/>
+            <module name="Magento_Checkout"/>
+            <module name="Magento_Quote"/>
+            <module name="Magento_SalesRule"/>
+            <module name="Magento_Directory" />
+            <module name="Magento_Config" />
+        </sequence>
+    </module>
+</config>

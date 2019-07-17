@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package    Falkone_CashOnPickup
+ * @author     Falk Ulbricht
+ * @copyright  2019 Falkone
+ * @license    https://www.gnu.org/licenses/gpl-3.0.de.html GNU General Public License 3
+ * @since      1.0.0
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <!-- default config setting for shipping carrier -->
+        <carriers>
+            <cash_on_pickup>
+                <active>0</active>
+                <title>Pickup in our stores</title>
+                <name>Pickup</name>
+                <handling_fee>0.00</handling_fee>
+                <sallowspecific>0</sallowspecific>
+                <sort_order>15</sort_order>
+                <specificerrmsg>This shipping method is currently not available.</specificerrmsg>
+                <model>Falkone\CashOnPickup\Model\Carrier\CashOnPickup</model>
+            </cash_on_pickup>
+        </carriers>
+        <!-- default config setting for payment method -->
+        <payment>
+            <cash_on_pickup>
+                <active>0</active>
+                <model>Falkone\CashOnPickup\Model\Payment\CashOnPickup</model>
+                <order_status>pending</order_status>
+                <title>Pay cash on pickup</title>
+                <allowspecific>0</allowspecific>
+                <group>Offline</group>
+            </cash_on_pickup>
+        </payment>
+    </default>
+</config>
