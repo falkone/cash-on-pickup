@@ -55,12 +55,17 @@ class CashOnPickup extends \Magento\Payment\Model\Method\AbstractMethod
      */
     public function isAvailable(\Magento\Quote\Api\Data\CartInterface $quote = null)
     {
-        /** @var Address $quoteShippingAddress */
-        $quoteShippingAddress = $quote->getShippingAddress();
-        if ($quoteShippingAddress) {
-            $quoteShippingMethod = $quoteShippingAddress->getShippingMethod();
+        $result = false;
+        if ($quote !== null) {
+            /** @var Address $quoteShippingAddress */
+            $quoteShippingAddress = $quote->getShippingAddress();
+            if ($quoteShippingAddress) {
+                $quoteShippingMethod = $quoteShippingAddress->getShippingMethod();
+                $result = ($quoteShippingMethod === $this->getFullCarrierMethodeCode());
+            }
         }
-        return $quoteShippingMethod === $this->getFullCarrierMethodeCode() && parent::isAvailable($quote);
+
+        return $result && parent::isAvailable($quote);
     }
 
     /**

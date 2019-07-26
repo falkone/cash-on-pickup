@@ -17,7 +17,7 @@
                 <active>0</active>
                 <title>Pickup in our stores</title>
                 <name>Pickup</name>
-                <handling_fee>0.00</handling_fee>
+                <price>0.00</price>
                 <sallowspecific>0</sallowspecific>
                 <sort_order>15</sort_order>
                 <specificerrmsg>This shipping method is currently not available.</specificerrmsg>

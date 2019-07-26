@@ -91,10 +91,11 @@ class CashOnPickup extends AbstractCarrier implements CarrierInterface
         $method->setMethod($this->_code);
         $method->setMethodTitle($this->getConfigData('name'));
 
-        $shippingCost = (float)$this->getConfigData('handling_fee');
+        $configPrice = (float)$this->getConfigData('price');
+        $shippingPrice = $this->getFinalPriceWithHandlingFee($configPrice);
 
-        $method->setPrice($shippingCost);
-        $method->setCost($shippingCost);
+        $method->setPrice($shippingPrice);
+        $method->setCost($shippingPrice);
 
         $result->append($method);
 

@@ -55,7 +55,7 @@ class CashOnPickupConfigProvider implements ConfigProviderInterface
     {
         $config = [];
 
-        if ($this->methods[$this->code]->isAvailable()) {
+        if ($this->methods[$this->code]->isActive()) {
             $config['payment']['instructions'][$this->code] = $this->getInstructions($this->code);
         }
 
