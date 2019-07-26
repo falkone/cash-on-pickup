@@ -1,6 +1,6 @@
 {
     "name": "falkone/cashonpickup",
-    "description": "",
+    "description": "Magento 2 Module to provide new shipping and payment method for cash payment and in store pickup",
     "require": {
         "php": "~7.1.3||~7.2.0||~7.3.0||~7.3.0",
         "magento/framework": "102.0.*",
@@ -19,7 +19,7 @@
 
     },
     "type": "magento2-module",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "license": [
 
     ],
