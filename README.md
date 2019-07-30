@@ -2,10 +2,7 @@
 Magento 2 Module to provide new shipping and payment method for cash payment and in store pickup
 
 ## Installation
-* add git repository to composer 
-```
-composer config repositories.cash-on-pickup git git@github.com:falkone/cash-on-pickup.git
-```
+
 * require module
 ```
 composer require falkone/cash-on-pickup
@@ -27,5 +24,5 @@ But Customer can use Cash-on-Pickup Shipment in combination with other payment m
 * not tested with MSI
 
 ### Contribute
-Feel free to fork project and create Pull-Requests. 
-Also please report bugs as issue here in GitHub. 
+ Feel free to fork project and create Pull-Requests. 
+                                                 Also please report bugs as issue here in GitHub.

@@ -13,6 +13,8 @@ use Magento\OfflinePayments\Block\Form\AbstractInstruction;
 
 /**
  * Block for Cash On Pickup payment method form
+ *
+ * @codeCoverageIgnore Contains no business logic
  */
 class CashOnPickup extends AbstractInstruction
 {

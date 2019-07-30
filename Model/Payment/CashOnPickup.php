@@ -11,6 +11,7 @@ namespace Falkone\CashOnPickup\Model\Payment;
 
 use Falkone\CashOnPickup\Block\Form\CashOnPickup as CashOnPickupBlock;
 use Falkone\CashOnPickup\Model\Carrier\CashOnPickup as CashOnPickupCarrier;
+use Magento\Directory\Helper\Data as DirectoryHelper;
 use Magento\Payment\Block\Info\Instructions;
 use Magento\Quote\Model\Quote\Address;
 
@@ -51,6 +52,41 @@ class CashOnPickup extends \Magento\Payment\Model\Method\AbstractMethod
     protected $_isOffline = true;
 
     /**
+     * @var CashOnPickupCarrier
+     */
+    private $cashOnPickupShippingMethod;
+
+    public function __construct(
+        \Magento\Framework\Model\Context $context,
+        \Magento\Framework\Registry $registry,
+        \Magento\Framework\Api\ExtensionAttributesFactory $extensionFactory,
+        \Magento\Framework\Api\AttributeValueFactory $customAttributeFactory,
+        \Magento\Payment\Helper\Data $paymentData,
+        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
+        \Magento\Payment\Model\Method\Logger $logger,
+        \Falkone\CashOnPickup\Model\Carrier\CashOnPickup $cashOnPickupShippingMethod,
+        \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
+        \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
+        array $data = [],
+        DirectoryHelper $directory = null
+    ) {
+        parent::__construct(
+            $context,
+            $registry,
+            $extensionFactory,
+            $customAttributeFactory,
+            $paymentData,
+            $scopeConfig,
+            $logger,
+            $resource,
+            $resourceCollection,
+            $data,
+            $directory
+        );
+        $this->cashOnPickupShippingMethod = $cashOnPickupShippingMethod;
+    }
+
+    /**
      * @inheritDoc
      */
     public function isAvailable(\Magento\Quote\Api\Data\CartInterface $quote = null)
@@ -61,7 +97,7 @@ class CashOnPickup extends \Magento\Payment\Model\Method\AbstractMethod
             $quoteShippingAddress = $quote->getShippingAddress();
             if ($quoteShippingAddress) {
                 $quoteShippingMethod = $quoteShippingAddress->getShippingMethod();
-                $result = ($quoteShippingMethod === $this->getFullCarrierMethodeCode());
+                $result              = ($quoteShippingMethod === $this->getFullCarrierMethodeCode());
             }
         }
 
@@ -83,10 +119,10 @@ class CashOnPickup extends \Magento\Payment\Model\Method\AbstractMethod
      *
      * @return string
      */
-    private function getFullCarrierMethodeCode() {
-        // ToDo: get the carrierCode and methodCode from method instate of using same constance
-        $carrierCode = CashOnPickupCarrier::SHIPPING_METHOD_CASHONPICKUP_CODE;
-        $methodCode = CashOnPickupCarrier::SHIPPING_METHOD_CASHONPICKUP_CODE;
+    private function getFullCarrierMethodeCode()
+    {
+        $carrierCode = $this->cashOnPickupShippingMethod->getCarrierCode();
+        $methodCode  = $this->cashOnPickupShippingMethod->getId();
         return $carrierCode . '_' . $methodCode;
     }
 }

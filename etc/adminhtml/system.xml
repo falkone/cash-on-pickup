@@ -31,7 +31,7 @@
                 <field id="handling_type" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
                     <label>Calculate Handling Fee</label>
                     <source_model>Magento\Shipping\Model\Source\HandlingType</source_model>
-                    <comment>Handling fee percent based on shipping price not on cart totals.</comment>
+                    <comment>Handling fee percent based on shipping price, not on cart totals.</comment>
                 </field>
                 <field id="handling_fee" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
                     <label>Handling Fee</label>
