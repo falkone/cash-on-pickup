@@ -13,6 +13,7 @@ use Falkone\CashOnPickup\Block\Form\CashOnPickup as CashOnPickupBlock;
 use Falkone\CashOnPickup\Model\Carrier\CashOnPickup as CashOnPickupCarrier;
 use Magento\Directory\Helper\Data as DirectoryHelper;
 use Magento\Payment\Block\Info\Instructions;
+use Magento\Payment\Model\Method\Logger;
 use Magento\Quote\Model\Quote\Address;
 
 /**
@@ -56,6 +57,21 @@ class CashOnPickup extends \Magento\Payment\Model\Method\AbstractMethod
      */
     private $cashOnPickupShippingMethod;
 
+    /**
+     * @param \Magento\Framework\Model\Context                        $context
+     * @param \Magento\Framework\Registry                             $registry
+     * @param \Magento\Framework\Api\ExtensionAttributesFactory       $extensionFactory
+     * @param \Magento\Framework\Api\AttributeValueFactory            $customAttributeFactory
+     * @param \Magento\Payment\Helper\Data                            $paymentData
+     * @param \Magento\Framework\App\Config\ScopeConfigInterface      $scopeConfig
+     * @param Logger                                                  $logger
+     * @param CashOnPickupCarrier                                     $cashOnPickupShippingMethod
+     * @param \Magento\Framework\Model\ResourceModel\AbstractResource $resource
+     * @param \Magento\Framework\Data\Collection\AbstractDb           $resourceCollection
+     * @param array                                                   $data
+     * @param DirectoryHelper                                         $directory
+     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
+     */
     public function __construct(
         \Magento\Framework\Model\Context $context,
         \Magento\Framework\Registry $registry,
